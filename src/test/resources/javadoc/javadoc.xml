@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <package name="net.white_azalea.example">
+        <comment>日本語パッケージネーム</comment>
+        <class name="UnitTest2"
+               qualified="net.white_azalea.example.UnitTest2"
+               scope="public"
+               abstract="false"
+               error="false"
+               exception="false"
+               externalizable="false"
+               included="true"
+               serializable="false">
+            <comment>日本語メッセージテスト。.
+
+ JUnit のテストケース JavaDoc に日本語を入れた場合の動作チェックを行うものである。&lt;br&gt;
+ もちろん複数行で記述され、エンコードは UTF-8 だ。
+
+ Created by azalea on 2017/06/03.</comment>
+            <class qualified="java.lang.Object"/>
+            <constructor
+                    name="UnitTest2"
+                    signature="()"
+                    qualified="net.white_azalea.example.UnitTest2"
+                    scope="public"
+                    final="false"
+                    included="true"
+                    native="false"
+                    synchronized="false"
+                    static="false"
+                    varArgs="false"/>
+            <method
+                    name="toHexString_returnHexString_thatArgsAsUTF8Parsed"
+                    signature="()"
+                    qualified="net.white_azalea.example.UnitTest2.toHexString_returnHexString_thatArgsAsUTF8Parsed"
+                    scope="public"
+                    abstract="false"
+                    final="false"
+                    included="true"
+                    native="false"
+                    synchronized="false"
+                    static="false"
+                    varArgs="false">
+                <comment>toHexString は引数を UTF-8 文字列とみなして数値化、16 進数表現に変換する。.</comment>
+                <return qualified="void"/>
+                <exception qualified="java.io.UnsupportedEncodingException"/>
+                <annotation name="Test" qualified="org.junit.Test"/>
+            </method>
+            <annotation name="RunWith" qualified="org.junit.runner.RunWith">
+                <argument name="value" primitive="false" array="false">
+                    <type qualified="java.lang.Class">
+                        <generic qualified="?">
+                            <wildcard>
+<extendsBound qualified="org.junit.runner.Runner"/>
+                            </wildcard>
+                        </generic>
+                    </type>
+                    <value>org.junit.runners.JUnit4</value>
+                </argument>
+            </annotation>
+        </class>
+    </package>
+    <package name="net.white_azalea">
+        <comment>English package name.
+
+ With descriptions.</comment>
+        <class name="UnitTest1" qualified="net.white_azalea.UnitTest1" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+            <comment>UnitTest1 is unit test about UnitTestTarget1 class.
+
+ Description messages example.
+
+ Created by azalea on 2017/06/03.</comment>
+            <class qualified="java.lang.Object"/>
+            <constructor name="UnitTest1" signature="()" qualified="net.white_azalea.UnitTest1" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false"/>
+            <method name="addHelloPrefix_returnArgWithHello" signature="()" qualified="net.white_azalea.UnitTest1.addHelloPrefix_returnArgWithHello" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>addHelloPrefix are return "Hello," prefixed message.
+
+ Request addHelloPrefix("Hoge") method
+ should return "Hello, Hoge"</comment>
+                <return qualified="void"/>
+                <annotation name="Test" qualified="org.junit.Test"/>
+            </method>
+            <method name="errorTest" signature="()" qualified="net.white_azalea.UnitTest1.errorTest" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+                <comment>Test for error message test.</comment>
+                <return qualified="void"/>
+                <annotation name="Test" qualified="org.junit.Test"/>
+            </method>
+            <annotation name="RunWith" qualified="org.junit.runner.RunWith">
+                <argument name="value" primitive="false" array="false">
+                    <type qualified="java.lang.Class">
+                        <generic qualified="?">
+                            <wildcard>
+<extendsBound qualified="org.junit.runner.Runner"/>
+                            </wildcard>
+                        </generic>
+                    </type>
+                    <value>org.junit.runners.JUnit4</value>
+                </argument>
+            </annotation>
+        </class>
+    </package>
+</root>
