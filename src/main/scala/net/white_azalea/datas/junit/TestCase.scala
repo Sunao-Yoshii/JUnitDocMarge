@@ -1,4 +1,4 @@
-package net.white_azalea.parsers.junits
+package net.white_azalea.datas.junit
 
 case class TestFailure(
   message: String,
@@ -14,6 +14,9 @@ case class TestCase(
 
   def isSuccess: Boolean =
     failures.isEmpty
+
+  def className: String =
+    qualifiedClassName.split("\\.").last
 
   def packageName: String =
     qualifiedClassName.split("\\.").dropRight(1).mkString(".")

@@ -1,4 +1,4 @@
-package net.white_azalea.parsers.utils
+package net.white_azalea.models.parsers.utils
 
 import java.io.File
 
@@ -14,7 +14,7 @@ object XML {
   /**
    * load XML file and parse to Document object.
    *
-   * @param file
+   * @param file target xml file.
    * @return
    */
   def load(file: File): Document = {

@@ -1,4 +1,4 @@
-package net.white_azalea.parsers.javadoc
+package net.white_azalea.datas.javadoc
 
 case class MethodDoc(
   name: String,

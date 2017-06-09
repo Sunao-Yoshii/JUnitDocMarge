@@ -1,12 +1,13 @@
-package net.white_azalea.parsers.junits
+package net.white_azalea.models.parsers.junits
 
-import java.io.{ File, FilenameFilter }
+import java.io.{File, FilenameFilter}
 
-import net.white_azalea.parsers.utils.XML
+import net.white_azalea.datas.junit.{TestCase, TestFailure}
+import net.white_azalea.models.parsers.utils.XML
 
 import scala.xml.Node
 
-object JunitResultParser {
+class JunitResultParser {
 
   def parse(xmlDir: File): Seq[TestCase] = {
     val xmlFiles = xmlDir.listFiles(new FilenameFilter {

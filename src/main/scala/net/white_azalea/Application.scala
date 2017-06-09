@@ -1,7 +1,8 @@
 package net.white_azalea
 
-import net.white_azalea.parsers.arguments.ArgParser
-import net.white_azalea.parsers.junits.JunitResultParser
+import models.parsers.arguments.parseArgument
+import models.parsers.junits.parseJunit
+import models.parsers.javadoc.parseJavadoc
 
 /**
  * Application entry point.
@@ -10,13 +11,9 @@ import net.white_azalea.parsers.junits.JunitResultParser
  */
 object Application extends App {
 
-  ArgParser.parse(args).foreach(config => {
-    val javaDoc =
-      parsers.javadoc.xmlDocletparser
-        .parse(config.javaDocXml)
-
-    val testCases =
-      JunitResultParser.parse(config.junitResultDir)
+  parseArgument(args).foreach(config => {
+    def javaDoc   = parseJavadoc(config.javaDocXml)
+    def testCases = parseJunit(config.junitResultDir)
 
     println(testCases)
   })

@@ -1,14 +1,15 @@
-package net.white_azalea.parsers.javadoc
+package net.white_azalea.models.parsers.javadoc
 import java.io.File
 
-import net.white_azalea.parsers.utils.XML
+import net.white_azalea.datas.javadoc.{ClassDoc, MethodDoc, PackageDoc}
+import net.white_azalea.models.parsers.utils.XML
 
 import scala.xml.Node
 
 /**
  * A javadoc parser that specified MarkusBernhardt/xml-doclet (var 1.0.5).
  */
-class XmlDocletParser extends JavaDocParser {
+class XmlDocletParser {
 
   /**
    * Parse XML file to PackageDoc objects.
@@ -16,7 +17,7 @@ class XmlDocletParser extends JavaDocParser {
    * @param xmlFile source file.
    * @return
    */
-  override def parse(xmlFile: File): List[PackageDoc] = {
+  def parse(xmlFile: File): List[PackageDoc] = {
     try {
       val document = XML.load(xmlFile)
       (document \ "package").flatMap(readPackage).toList
@@ -34,7 +35,7 @@ class XmlDocletParser extends JavaDocParser {
    * @param packageNode package element node.
    * @return
    */
-  def readPackage(packageNode: Node): Option[PackageDoc] = {
+  private[javadoc] def readPackage(packageNode: Node): Option[PackageDoc] = {
     val name = packageNode \@ "name"
     val comment = findNode(packageNode, "comment").map(_.text)
     val classes = (packageNode \ "class").flatMap(readClass)
@@ -52,7 +53,7 @@ class XmlDocletParser extends JavaDocParser {
    * @param classNode class element node.
    * @return
    */
-  def readClass(classNode: Node): Option[ClassDoc] = {
+  private[javadoc] def readClass(classNode: Node): Option[ClassDoc] = {
 
     if (isSkipClass(classNode)) {
 
@@ -85,7 +86,7 @@ class XmlDocletParser extends JavaDocParser {
    * @param classNode class XML node.
    * @return
    */
-  def isSkipClass(classNode: Node): Boolean = {
+  private[javadoc] def isSkipClass(classNode: Node): Boolean = {
     classNode \@ "abstract" == "true" ||
       classNode \@ "scope" != "public"
   }
@@ -96,7 +97,7 @@ class XmlDocletParser extends JavaDocParser {
    * @param node method definition XML element.
    * @return
    */
-  def readMethod(node: Node): Option[MethodDoc] = {
+  private[javadoc] def readMethod(node: Node): Option[MethodDoc] = {
     if (isSkipMethod(node)) {
       None
     } else {
@@ -118,7 +119,7 @@ class XmlDocletParser extends JavaDocParser {
    * @param node method element.
    * @return
    */
-  def isSkipMethod(node: Node): Boolean = {
+  private[javadoc] def isSkipMethod(node: Node): Boolean = {
     val isTestCase = (node \ "annotation").exists(n => {
       val annotateClass = n \@ "qualified"
       annotateClass == "org.junit.Test"
@@ -134,7 +135,7 @@ class XmlDocletParser extends JavaDocParser {
    * @param tagName
    * @return
    */
-  def findNode(node: Node, tagName: String): Option[Node] = {
+  private[javadoc] def findNode(node: Node, tagName: String): Option[Node] = {
     (node \ tagName).headOption
   }
 }

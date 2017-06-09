@@ -1,4 +1,4 @@
-package net.white_azalea.parsers.arguments
+package net.white_azalea.models.parsers.arguments
 
 import java.io.File
 
