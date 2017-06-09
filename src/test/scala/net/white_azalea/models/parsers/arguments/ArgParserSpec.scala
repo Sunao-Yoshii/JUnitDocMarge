@@ -1,41 +1,37 @@
 package net.white_azalea.models.parsers.arguments
 
-import java.io.File
-
+import net.white_azalea.datas.arguments.Config
 import org.specs2.Specification
 
 /**
-  * Created by azalea on 2017/06/04.
-  */
+ * Test for argument parser.
+ */
 class ArgParserSpec extends Specification {
   def is =
     s2"""
 This specification check argument parser.
 
 The 'parse' method should
-  parse method will good to parse 2 args         $r1
-  parse arg1 to javaDocXml(as java.io.File)      $r2
-  parse arg1 to junitResultDir(as java.io.File)  $r3
-  return none if args are bad                    $b1
-  return none if args1 are bad                   $b2
-  return none if arg2 are bad                    $b3
+  parse 2 arguments as File[file] and File[dir]:     $simple
+  javadoc file arg must be exists           :     $arg1exists
+  javadoc file arg must be file             :     $arg1dir
+  javadoc file arg must be xml extension    :     $arg1txt
                                                  """
 
-  val goodArguments = Array(
-    "src/test/resources/javadoc/javadoc.xml", "src/test/resources/ut")
+  def parse(args: Seq[String]) =
+    new ArgParser().parse(args, Config(null, null, null, null))
 
-  def r1 = ArgParser.parse(goodArguments).isDefined must beTrue
-  def r2 = ArgParser.parse(goodArguments).get.javaDocXml must beAnInstanceOf[File]
-  def r3 = ArgParser.parse(goodArguments).get.junitResultDir must beAnInstanceOf[File]
+  val testJavadocXmlFile = "src/test/resources/javadoc/javadoc.xml"
+  val testUtResultDir = "src/test/resources/ut"
+  val dummyTextFile = "src/test/resources/javadoc/not_xml.txt"
 
-  val badJavaDoc = Array(
-    "src/test/resources/javadoc/not_xml.txt",
-    "src/test/resources/ut")
-  val badJUnit   = Array(
-    "src/test/resources/javadoc/not_xml.txt",
-    "src/test/resources/javadoc/not_xml.txt")
+  def simple = parse(Seq(testJavadocXmlFile, testUtResultDir))
+    .map(v => v.javaDocXml.exists() && v.junitResultDir.exists()) must_== Some(true)
 
-  def b1 = ArgParser.parse(Array()).isEmpty must beTrue
-  def b2 = ArgParser.parse(badJavaDoc).isEmpty must beTrue
-  def b3 = ArgParser.parse(badJUnit).isEmpty must beTrue
+  def arg1exists = parse(Seq("nothing/file/path.xml", testUtResultDir)) must_== None
+
+  def arg1dir = parse(Seq(testUtResultDir, testUtResultDir)) must_== None
+
+  def arg1txt = parse(Seq(dummyTextFile, testUtResultDir)) must_== None
+
 }

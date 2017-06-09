@@ -15,11 +15,11 @@ package object javadoc {
   private val xmlJavaDocParser = new XmlDocletParser
 
   /**
-    * parse javadoc xml.
-    *
-    * @param file javadoc XML file.
-    * @return
-    */
+   * parse javadoc xml.
+   *
+   * @param file javadoc XML file.
+   * @return
+   */
   def parseJavadoc(file: File): List[PackageDoc] =
     xmlJavaDocParser.parse(file)
 }

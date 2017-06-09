@@ -12,7 +12,7 @@ import models.parsers.javadoc.parseJavadoc
 object Application extends App {
 
   parseArgument(args).foreach(config => {
-    def javaDoc   = parseJavadoc(config.javaDocXml)
+    def javaDoc = parseJavadoc(config.javaDocXml)
     def testCases = parseJunit(config.junitResultDir)
 
     println(testCases)

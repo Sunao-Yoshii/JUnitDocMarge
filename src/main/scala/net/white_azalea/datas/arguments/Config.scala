@@ -10,4 +10,9 @@ import java.io.File
  * @param javaDocXml      JavaDoc XML file path.
  * @param junitResultDir  JUnit test results XML dir path.
  */
-case class Config(output: File, template: File, javaDocXml: File, junitResultDir: File)
+case class Config(
+  output: File,
+  template: File,
+  javaDocXml: File,
+  junitResultDir: File
+)

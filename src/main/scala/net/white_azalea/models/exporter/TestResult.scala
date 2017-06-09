@@ -1,17 +1,15 @@
-package net.white_azalea.exporter
+package net.white_azalea.models.exporter
 
-import net.white_azalea.datas.javadoc.{ClassDoc, MethodDoc, PackageDoc}
-import net.white_azalea.datas.junit.{TestCase, TestFailure}
-import net.white_azalea.models.parsers.javadoc.{ClassDoc, MethodDoc}
-import net.white_azalea.models.parsers.junits.TestFailure
+import net.white_azalea.datas.javadoc.{ ClassDoc, MethodDoc, PackageDoc }
+import net.white_azalea.datas.junit.{ TestCase, TestFailure }
 
 case class TestResult(
-  name: String,
-  className: String,
-  packageName: String,
-  summary: String,
-  description: String,
-  errors: Seq[TestFailure]
+    name: String,
+    className: String,
+    packageName: String,
+    summary: String,
+    description: String,
+    errors: Seq[TestFailure]
 ) {
   val isSuccess = errors.isEmpty
   val isFailed = !isSuccess
@@ -35,11 +33,11 @@ case class TestPackageResult(
 object TestResult {
 
   def parse(
-             packageName: String,
-             className: String,
-             testCases: Seq[TestCase],
-             methodDocs: Seq[MethodDoc]
-           ): Seq[TestResult] = {
+    packageName: String,
+    className: String,
+    testCases: Seq[TestCase],
+    methodDocs: Seq[MethodDoc]
+  ): Seq[TestResult] = {
     testCases
       .map(testCase => {
         val methodDoc = methodDocs.find(_.name == testCase.name)

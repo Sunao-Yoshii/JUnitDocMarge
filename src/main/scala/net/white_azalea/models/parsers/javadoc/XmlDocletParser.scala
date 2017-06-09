@@ -1,7 +1,7 @@
 package net.white_azalea.models.parsers.javadoc
 import java.io.File
 
-import net.white_azalea.datas.javadoc.{ClassDoc, MethodDoc, PackageDoc}
+import net.white_azalea.datas.javadoc.{ ClassDoc, MethodDoc, PackageDoc }
 import net.white_azalea.models.parsers.utils.XML
 
 import scala.xml.Node
