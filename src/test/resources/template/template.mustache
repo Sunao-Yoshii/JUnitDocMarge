@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unit Test results.</title>
+</head>
+<body>
+<div class="all">
+    <h1>Unit Test results.</h1>
+    {{#package}}
+    <section class="package">
+        <h2 class="package-title">
+            {{name}}
+            <small>{{{summary}}}</small>
+        </h2>
+        <p class="package-description">
+            {{{description}}}
+        </p>
+        {{#testClasses}}
+        <table class="class">
+            <caption>
+                <h3 class="class-title">
+                    {{name}}
+                    <small>{{{summary}}}</small>
+                </h3>
+                <p class="class-description">
+                    {{{description}}}
+                </p>
+            </caption>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Summary</th>
+                <th>Description</th>
+                <th>OK/NG</th>
+                <th>Errors</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#tests}}
+            <tr class="case">
+                <td>{{name}}</td>
+                <td>{{{summary}}}</td>
+                <td>{{{description}}}</td>
+                <td>
+                    {{#isSuccess}}<span class="success">OK</span>{{/isSuccess}}
+                    {{#isFailed}}<span class="failure">NG</span>{{/isFailed}}
+                </td>
+                <td class="errors">
+                    {{#errors}}
+                    <p>
+                        {{message}}<br>
+                        {{detail}}
+                    </p>
+                    {{/errors}}
+                </td>
+            </tr>
+            {{/tests}}
+            </tbody>
+        </table>
+        {{/testClasses}}
+    </section>
+    {{/package}}
+</div>
+</body>
+</html>

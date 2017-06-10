@@ -55,15 +55,16 @@ object TestClassResult {
 
   def parse(packageName: String, testCases: Seq[TestCase], classDocs: Seq[ClassDoc]): Seq[TestClassResult] = {
     testCases
-      .map(_.name)
+      .map(_.qualifiedClassName)
       .distinct
-      .map(name => {
-        val classDoc = classDocs.find(_.name == name)
+      .map(qualifiedClassName => {
+        val name = qualifiedClassName.split("\\.").last
+        val classDoc = classDocs.find(_.qualifiedName == qualifiedClassName)
         val summary = classDoc.flatMap(_.summary).getOrElse("")
         val description = classDoc.flatMap(_.description).getOrElse("")
         val tests = TestResult.parse(
           packageName, name,
-          testCases.filter(_.className == name),
+          testCases.filter(_.qualifiedClassName == qualifiedClassName),
           classDoc.map(_.methods).getOrElse(Nil)
         )
 

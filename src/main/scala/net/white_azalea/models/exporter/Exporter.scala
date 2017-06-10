@@ -17,12 +17,14 @@ object Exporter {
    * @param docs
    * @param results
    */
-  def export(file: Option[File], docs: => List[PackageDoc], results: => List[TestCase]): Unit = {
+  def export(file: Option[File], docs: => List[PackageDoc], results: => List[TestCase]): String = {
     // convert to TestPackageList.
     val result = TestPackageResult.parse(results, docs)
 
     // init template.
+    val template = new Template(file)
 
     // render to file.
+    template.render(result)
   }
 }

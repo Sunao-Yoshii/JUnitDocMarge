@@ -1,7 +1,5 @@
 package net.white_azalea.models.parsers
 
-import java.io.File
-
 import net.white_azalea.datas.arguments.Config
 
 /**
@@ -28,6 +26,6 @@ package object arguments {
    * @return return Some(Config) if arguments are valid.
    */
   def parseArgument(args: Array[String]): Option[Config] = {
-    (new ArgParser).parse(args, Config(new File("./output.html"), null, null, null))
+    (new ArgParser).parse(args, Config(null, null, null))
   }
 }

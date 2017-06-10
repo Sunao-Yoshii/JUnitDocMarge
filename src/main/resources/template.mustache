@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unit Test results.</title>
+    <style type="text/css">
+        <!--
+        body {
+            background-color: #ddd;
+            font-size       : 13px;
+            text-align      : left:
+        }
+        p, span, caption { text-align: left; }
+        .all {
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        h1, h2, h3, h4 {
+            padding-left: 5px;
+            text-align: left;
+            margin: 5px 0;
+        }
+        h1 {
+            font-size: 1.8rem;
+            border-bottom: dashed 2px #33f;
+        }
+        h2 {
+            font-size: 1.6rem;
+            border-bottom: dashed 1px #33f;
+        }
+        h3 { font-size: 1.4rem; }
+        h4 { font-size: 1.2rem; }
+        small {
+            font-size: 60%;
+            font-weight: normal;
+            color: #555;
+        }
+        table, td, th { border: 1px #99f solid; }
+        .package {
+            border: solid 1px #33f ;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        .package-description { padding-left: 2rem; }
+        .class { margin-left: 10px; }
+        .class > caption > p { padding-left: 2rem; }
+        .success {
+            color: #5a5;
+            font-weight: bold;
+        }
+        .failure {
+            color: #a55;
+            font-weight: bold;
+        ]
+        -->
+    </style>
+</head>
+<body>
+<div class="all">
+    <h1>Unit Test results.</h1>
+    {{#package}}
+    <section class="package">
+        <h2 class="package-title">
+            {{name}}
+            <small>{{{summary}}}</small>
+        </h2>
+        <p class="package-description">
+            {{{description}}}
+        </p>
+        {{#testClasses}}
+        <table class="class">
+            <caption>
+                <h3 class="class-title">
+                    {{name}}
+                    <small>{{{summary}}}</small>
+                </h3>
+                <p class="class-description">
+                    {{{description}}}
+                </p>
+            </caption>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Summary</th>
+                <th>Description</th>
+                <th>OK/NG</th>
+                <th>Errors</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#tests}}
+            <tr class="case">
+                <td>{{name}}</td>
+                <td>{{{summary}}}</td>
+                <td>{{{description}}}</td>
+                <td>
+                    {{#isSuccess}}<span class="success">OK</span>{{/isSuccess}}
+                    {{#isFailed}}<span class="failure">NG</span>{{/isFailed}}
+                </td>
+                <td class="errors">
+                    {{#errors}}
+                    <p>
+                        {{message}}<br>
+                        {{detail}}
+                    </p>
+                    {{/errors}}
+                </td>
+            </tr>
+            {{/tests}}
+            </tbody>
+        </table>
+        {{/testClasses}}
+    </section>
+    {{/package}}
+</div>
+</body>
+</html>

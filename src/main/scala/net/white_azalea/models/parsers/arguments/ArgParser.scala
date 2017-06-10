@@ -36,11 +36,6 @@ class ArgParser extends OptionParser[Config]("ut_converter") {
     .action((f, c) => c.copy(junitResultDir = f))
     .validate(v => if (v.isDirectory) Right() else Left("Not directory."))
 
-  arg[File]("output")
-    .optional()
-    .text("Path to output file path.")
-    .action((f, c) => c.copy(output = f))
-
   help("help").text("print this usage text.")
 
   note(

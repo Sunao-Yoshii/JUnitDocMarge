@@ -9,14 +9,15 @@ import scala.xml.Node
 
 class JunitResultParser {
 
-  def parse(xmlDir: File): Seq[TestCase] = {
+  def parse(xmlDir: File): List[TestCase] = {
     val xmlFiles = xmlDir.listFiles(new FilenameFilter {
-      override def accept(dir: File, name: String) = name.endsWith(".xml")
+      override def accept(dir: File, name: String): Boolean =
+        name.endsWith(".xml")
     })
 
     xmlFiles
-      .toSeq
       .flatMap(parseSingleFile)
+      .toList
   }
 
   private[junits] def parseSingleFile(file: File): Seq[TestCase] = {
