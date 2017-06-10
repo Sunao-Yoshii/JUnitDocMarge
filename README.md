@@ -26,7 +26,7 @@
    ```
 4. call this jar.
    ```$xslt
-        $ java -jar target/scala-2.11/ut_converter.jar src/test/resources/javadoc/javadoc.xml src/test/resources/ut
+        $ java -jar ut_converter.jar javadoc/javadoc.xml ut
         SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
         SLF4J: Defaulting to no-operation (NOP) logger implementation
         SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
@@ -40,3 +40,9 @@
                 body {
    ```
    後は redirection でもしてファイルにすればおｋ
+
+## その他ヘルプ
+
+`-h` コマンドでヘルプが見れるので、そちらを参照。  
+テンプレートには [scalate](https://github.com/scalate/scalate) を採用しているので、
+テンプレートを自前用意する場合はそのドキュメントを参照してください。
