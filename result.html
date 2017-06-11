@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unit Test results.</title>
+    <style type="text/css">
+        <!--
+        body {
+            background-color: #ddd;
+            font-size       : 13px;
+            text-align      : left:
+        }
+        p, span, caption { text-align: left; }
+        .all {
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        h1, h2, h3, h4 {
+            padding-left: 5px;
+            text-align: left;
+            margin: 5px 0;
+        }
+        h1 {
+            font-size: 1.8rem;
+            border-bottom: dashed 2px #33f;
+        }
+        h2 {
+            font-size: 1.6rem;
+            border-bottom: dashed 1px #33f;
+        }
+        h3 { font-size: 1.4rem; }
+        h4 { font-size: 1.2rem; }
+        small {
+            font-size: 60%;
+            font-weight: normal;
+            color: #555;
+        }
+        table, td, th { border: 1px #99f solid; }
+        .package {
+            border: solid 1px #33f ;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        .package-description { padding-left: 2rem; }
+        .class { margin-left: 10px; }
+        .class > caption > p { padding-left: 2rem; }
+        .success {
+            color: #5a5;
+            font-weight: bold;
+        }
+        .failure {
+            color: #a55;
+            font-weight: bold;
+        ]
+        -->
+    </style>
+</head>
+<body>
+<div class="all">
+    <h1>Unit Test results.</h1>
+    <section class="package">
+        <h2 class="package-title">
+            net.white_azalea.example
+            <small>日本語パッケージネーム</small>
+        </h2>
+        <p class="package-description">
+            
+        </p>
+        <table class="class">
+            <caption>
+                <h3 class="class-title">
+                    UnitTest2
+                    <small>日本語メッセージテスト。</small>
+                </h3>
+                <p class="class-description">
+                     JUnit のテストケース JavaDoc に日本語を入れた場合の動作チェックを行うものである。<br>もちろん複数行で記述され、エンコードは UTF-8 だ。 Created by azalea on 2017/06/03
+                </p>
+            </caption>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Summary</th>
+                <th>Description</th>
+                <th>OK/NG</th>
+                <th>Errors</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="case">
+                <td>toHexString_returnHexString_thatArgsAsUTF8Parsed</td>
+                <td>toHexString は引数を UTF-8 文字列とみなして数値化、16 進数表現に変換する。</td>
+                <td></td>
+                <td>
+                    <span class="success">OK</span></td>
+                <td class="errors">
+                    </td>
+            </tr>
+            </tbody>
+        </table>
+        </section>
+    <section class="package">
+        <h2 class="package-title">
+            net.white_azalea
+            <small>English package name</small>
+        </h2>
+        <p class="package-description">
+             With descriptions
+        </p>
+        <table class="class">
+            <caption>
+                <h3 class="class-title">
+                    UnitTest1
+                    <small>UnitTest1 is unit test about UnitTestTarget1 class</small>
+                </h3>
+                <p class="class-description">
+                     Description messages example.
+ Created by azalea on 2017/06/03
+                </p>
+            </caption>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Summary</th>
+                <th>Description</th>
+                <th>OK/NG</th>
+                <th>Errors</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="case">
+                <td>addHelloPrefix_returnArgWithHello</td>
+                <td>addHelloPrefix are return "Hello," prefixed message</td>
+                <td> Request addHelloPrefix("Hoge") method should return "Hello, Hoge"</td>
+                <td>
+                    <span class="success">OK</span></td>
+                <td class="errors">
+                    </td>
+            </tr>
+            <tr class="case">
+                <td>errorTest</td>
+                <td>Test for error message test</td>
+                <td></td>
+                <td>
+                    <span class="failure">NG</span></td>
+                <td class="errors">
+                    <p>
+                        with error message.<br>
+                        &lt;failure type=&quot;java.lang.AssertionError&quot; message=&quot;with error message.&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;java.lang.AssertionError: with error message. at net.white_azalea.UnitTest1.errorTest(UnitTest1.java:34)&lt;/failure&gt;
+                    </p>
+                    </td>
+            </tr>
+            </tbody>
+        </table>
+        </section>
+    </div>
+</body>
+</html>
